@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teste2</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+   
+
+</head>
+<body>
+    <button type="button" onclick="getUserById(1)">Get User</button>
+    <button type="button" onclick="getAllUsers()">Get All Users</button>
+    
+
+    <div id="getResult">
+
+    </div>
+
+
+    <script>
+        
+    
+        function getUserById(id){
+            
+    
+            var resultElement = document.getElementById("getResult")
+            resultElement.innerHTML = '';
+    
+            axios.get(`http://localhost:3000/users/${id}`,{
+               
+
+            }).then(function(response){
+
+                console.log(response);
+                resultElement.innerHTML = response.data
+
+            }).catch(function(error){
+
+                resultElement.innerHTML = errorMessage(error)
+
+            })
+        }
+        /*
+        function getUserByIdSuccess(response){
+            return '<h4>Result</h4>'+
+                    '<h5> Status:</h5>'+
+                    '<pre>'+ response.status + ' ' + response.statusText + '</pre>' +
+                    '<h5>Headers:</h5>'+
+                    '<pre>' + JSON.stringify(response.headers, null, '\t') + '</pre>' + 
+                    '<h5>Data:</h5>' + 
+                    '<pre>' + JSON.stringify(response.data, null, '\t') + '</pre>';
+        }
+        */
+    
+        function errorMessage(error){
+            return  '<h4>Result</h4>' + 
+              '<h5>Message:</h5> ' + 
+              '<pre>' + error.message + '</pre>' +
+              '<h5>Status:</h5> ' + 
+              '<pre>' + error.response.status + ' ' + error.response.statusText + '</pre>' +
+              '<h5>Headers:</h5>' + 
+              '<pre>' + JSON.stringify(error.response.headers, null, '\t') + '</pre>' + 
+              '<h5>Data:</h5>' + 
+              '<pre>' + JSON.stringify(error.response.data, null, '\t') + '</pre>'; 
+        }
+
+        function getAllUsers(){
+            
+            var resultElement = document.getElementById("getResult")
+            resultElement.innerHTML = '';
+    
+            axios.get(`http://localhost:3000/users`,{
+               
+
+            }).then(function(response){
+
+                console.log(response);
+                resultElement.innerHTML = response.data
+
+            }).catch(function(error){
+
+                resultElement.innerHTML = errorMessage(error)
+
+            })
+        }
+    
+    </script>
+    
+</body>
+</html>
+
