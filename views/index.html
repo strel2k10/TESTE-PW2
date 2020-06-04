@@ -17,20 +17,20 @@
     <button type="button" onclick="getUserById(1)">Get User</button>
     <button type="button" onclick="getAllUsers()">Get All Users</button>
     <button type="button" onclick="getReportById(1)">Get Report</button>
-    <button type="button" onclick="getAllReports()">Get All Reports enorme msm</button>    
+    <button type="button" onclick="getAllReports()">Get All Reports</button>    
     
 
     <!-- Botão da Modal de Registo e Início de Sessão -->
-    <div id="login" style="max-width: 50%; margin: auto; padding-top: 4%;">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
+    <div id="login" style="text-align: center; padding-top: 4%;">
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registerModal">
             Registar
         </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#loginModal">
             Iniciar Sessão
         </button>
     </div>
 
-    <!-- Modal REGISTO a-->
+    <!-- Modal REGISTO-->
     <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -58,12 +58,10 @@
                             <label for="exampleInputPassword1">Palavra Chave</label>
                             <input type="password" class="form-control" id="password">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Registar </button>
+                    <div class="modal-footer">
+                        <button type="submit" onclick="signUp()" class="btn btn-primary">Registar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,12 +90,11 @@
                             <label for="exampleInputPassword1">Palavra Chave</label>
                             <input type="password" class="form-control" id="password">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Iniciar Sessão</button>
+                <div class="modal-footer"" >
+                    <button type="submit" class="btn btn-primary">Iniciar Sessão</button>
                 </div>
             </div>
         </div>
@@ -109,6 +106,10 @@
 
 
     <script>
+        function signUp(){
+            
+        }
+
         function getUserById(id) {
 
 
