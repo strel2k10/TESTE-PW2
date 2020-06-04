@@ -20,7 +20,8 @@ app.use(bodyParser.json());
 
 module.exports = app
 
-require("./routes/user.js")(app)
+require("./routes/user.js")(app)    
+require("./routes/report.js")(app)
 
 app.listen(3000,function(){
     console.log("Server running at localhost:3000")
