@@ -1,37 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>teste2</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
-   
+
+
 
 </head>
+
 <body>
     <button type="button" onclick="getUserById(1)">Get User</button>
     <button type="button" onclick="getAllUsers()">Get All Users</button>
-    
-    <div id="login" style="max-width: 50%; margin: auto;"> 
+
+    <div id="login" style="max-width: 50%; margin: auto;">
         <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <label for="exampleInputEmail1">Email</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
                 <input type="email" class="form-control" id="username" aria-describedby="emailHelp">
                 <small id="emailHelp" class="form-text text-muted"></small>
-              </div>
+            </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="password">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="password">
             </div>
             <button id="submitLog" type="submit" class="btn btn-primary">Submit</button>
-          </form>
+        </form>
+    </div>
+    <br><br>
+
+    <div id="registo" style="max-width: 50%; margin: auto;">
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="email" class="form-control" id="username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Contacto</label>
+                <input type="number" class="form-control" id="contact">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="password">
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="userType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Tipo de User 
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Bombeiro</a>
+                  <a class="dropdown-item" href="#">Standard</a>
+                  <a class="dropdown-item" href="#">Admin</a>
+                </div>
+              </div>
+              <br>
+            <button id="submitLog" type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 
     <div id="getResult">
@@ -40,23 +79,21 @@
 
 
     <script>
-        
-    
-        function getUserById(id){
-            
-    
+        function getUserById(id) {
+
+
             var resultElement = document.getElementById("getResult")
             resultElement.innerHTML = '';
-    
-            axios.get(`http://localhost:3000/users/${id}`,{
-               
 
-            }).then(function(response){
+            axios.get(`http://localhost:3000/users/${id}`, {
+
+
+            }).then(function (response) {
 
                 console.log(response);
                 resultElement.innerHTML = response.data
 
-            }).catch(function(error){
+            }).catch(function (error) {
 
                 resultElement.innerHTML = errorMessage(error)
 
@@ -73,44 +110,49 @@
                     '<pre>' + JSON.stringify(response.data, null, '\t') + '</pre>';
         }
         */
-    
-        function errorMessage(error){
-            return  '<h4>Result</h4>' + 
-              '<h5>Message:</h5> ' + 
-              '<pre>' + error.message + '</pre>' +
-              '<h5>Status:</h5> ' + 
-              '<pre>' + error.response.status + ' ' + error.response.statusText + '</pre>' +
-              '<h5>Headers:</h5>' + 
-              '<pre>' + JSON.stringify(error.response.headers, null, '\t') + '</pre>' + 
-              '<h5>Data:</h5>' + 
-              '<pre>' + JSON.stringify(error.response.data, null, '\t') + '</pre>'; 
+
+        function errorMessage(error) {
+            return '<h4>Result</h4>' +
+                '<h5>Message:</h5> ' +
+                '<pre>' + error.message + '</pre>' +
+                '<h5>Status:</h5> ' +
+                '<pre>' + error.response.status + ' ' + error.response.statusText + '</pre>' +
+                '<h5>Headers:</h5>' +
+                '<pre>' + JSON.stringify(error.response.headers, null, '\t') + '</pre>' +
+                '<h5>Data:</h5>' +
+                '<pre>' + JSON.stringify(error.response.data, null, '\t') + '</pre>';
         }
 
-        function getAllUsers(){
-            
+        function getAllUsers() {
+
             var resultElement = document.getElementById("getResult")
             resultElement.innerHTML = '';
-    
-            axios.get(`http://localhost:3000/users`,{
-               
 
-            }).then(function(response){
+            axios.get(`http://localhost:3000/users`, {
+
+
+            }).then(function (response) {
 
                 console.log(response);
                 resultElement.innerHTML = response.data
 
-            }).catch(function(error){
+            }).catch(function (error) {
 
                 resultElement.innerHTML = errorMessage(error)
 
             })
         }
-        
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    
-</body>
-</html>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
 
+</body>
+
+</html>
