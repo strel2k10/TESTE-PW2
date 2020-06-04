@@ -1,11 +1,10 @@
-const User = function(user){
+const user = function(user){
     this.username = user.username
-    this.email = user.email
-    this.contacto = user.contact
     this.password = user.password
-    this.userType = user.userType
-    this.ativo = user.active
+    this.contact = user.contact
+    this.email = user.email
+    this.user_type = user.user_type
 }
 
 
-module.exports = User
+module.exports = user

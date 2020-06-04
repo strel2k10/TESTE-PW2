@@ -13,6 +13,8 @@
 <body>
     <button type="button" onclick="getUserById(1)">Get User</button>
     <button type="button" onclick="getAllUsers()">Get All Users</button>
+    <button type="button" onclick="getReportById(1)">Get Report</button>
+    <button type="button" onclick="getAllReports()">Get All Reports enorme msm</button>
     
 
     <div id="getResult">
@@ -87,6 +89,46 @@
             })
         }
     
+        function getReportById(id){
+            
+    
+            var resultElement = document.getElementById("getResult")
+            resultElement.innerHTML = '';
+    
+            axios.get(`http://localhost:3000/reports/${id}`,{
+               
+
+            }).then(function(response){
+
+                console.log(response);
+                resultElement.innerHTML = response.data
+
+            }).catch(function(error){
+
+                resultElement.innerHTML = errorMessage(error)
+
+            })
+        }
+    
+        function getAllReports(){
+            
+            var resultElement = document.getElementById("getResult")
+            resultElement.innerHTML = '';
+    
+            axios.get(`http://localhost:3000/reports`,{
+               
+
+            }).then(function(response){
+
+                console.log(response);
+                resultElement.innerHTML = response.data
+
+            }).catch(function(error){
+
+                resultElement.innerHTML = errorMessage(error)
+
+            })
+        }
     </script>
     
 </body>

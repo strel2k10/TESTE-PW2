@@ -1,11 +1,11 @@
 const db = require("../db");
-const user = require('../models/user.js');
+const report = require('../models/report.js');
 
 exports.findById = (req,res) =>{
-     id_user = req.params.id_user
+     const id_report = req.params.id_report
 
-    db.con.query("SELECT username,password,contact,email,user_type FROM user",
-    id_user,(err,result)=>{
+    db.con.query("SELECT fire_date,report_date,description,severity_level,password,user_type, FROM Report",
+    id_report,(err,result)=>{
         if(err){
             console.log("Error:",err)
             res.status(500).send({message:err.message ||"ocorreu um erro"})
@@ -13,8 +13,8 @@ exports.findById = (req,res) =>{
             res.status(404).send({"Not found": "User não foi encontrado"})
         }else{
             //res.status(200).send({"success":[result]})
-            res.render('idUser.html',{
-                name: result[0].username
+            res.render('report.html',{
+                report: result[0].description
 
             })
         }
@@ -22,7 +22,7 @@ exports.findById = (req,res) =>{
 }
 
 exports.findAll = (req,res) =>{
-    db.con.query("SELECT * FROM user", (err,result)=>{
+    db.con.query("SELECT * FROM report", (err,result)=>{
         if(err){
             console.log("Error:",err)
             res.status(500).send({message:err.message ||"ocorreu um erro"})
@@ -30,7 +30,7 @@ exports.findAll = (req,res) =>{
             res.status(404).send({"Not found": "User não foi encontrado"})
         }else{
 
-            res.render('allUsers.html',{
+            res.render('allReports.html',{
                 data: result
             })
         }
