@@ -17,50 +17,89 @@
     <button type="button" onclick="getUserById(1)">Get User</button>
     <button type="button" onclick="getAllUsers()">Get All Users</button>
     <button type="button" onclick="getReportById(1)">Get Report</button>
-    <button type="button" onclick="getAllReports()">Get All Reports enorme msm</button>
-        
-    </div>
-    <!-- Botão da Modal de Registo -->
+    <button type="button" onclick="getAllReports()">Get All Reports enorme msm</button>    
+    
+
+    <!-- Botão da Modal de Registo e Início de Sessão -->
     <div id="login" style="max-width: 50%; margin: auto; padding-top: 4%;">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
             Registar
         </button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+            Iniciar Sessão
+        </button>
     </div>
-    
+
     <!-- Modal REGISTO -->
-    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Registar</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Endereço Email</label>
-                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Nome de Utilizador</label>
-                        <input type="email" class="form-control" id="username" aria-describedby="emailHelp">
-                        <small id="emailHelp" class="form-text text-muted"></small>
-                      </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Palavra Chave</label>
-                      <input type="password" class="form-control" id="password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Endereço Email</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">Não partilharemos as suas informações
+                                publicamente.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nome de Utilizador</label>
+                            <input type="email" class="form-control" id="username" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Palavra Chave</label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Registar </button>
+                </div>
             </div>
         </div>
+    </div>
+
+    <!-- Modal LOGIN -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Iniciar Sessão</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nome de Utilizador</label>
+                            <input type="email" class="form-control" id="username" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">Não partilharemos as suas informações
+                                publicamente.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Palavra Chave</label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Iniciar Sessão</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -133,42 +172,42 @@
 
             })
         }
-    
-        function getReportById(id){
-            
-    
+
+        function getReportById(id) {
+
+
             var resultElement = document.getElementById("getResult")
             resultElement.innerHTML = '';
-    
-            axios.get(`http://localhost:3000/reports/${id}`,{
-               
 
-            }).then(function(response){
+            axios.get(`http://localhost:3000/reports/${id}`, {
+
+
+            }).then(function (response) {
 
                 console.log(response);
                 resultElement.innerHTML = response.data
 
-            }).catch(function(error){
+            }).catch(function (error) {
 
                 resultElement.innerHTML = errorMessage(error)
 
             })
         }
-    
-        function getAllReports(){
-            
+
+        function getAllReports() {
+
             var resultElement = document.getElementById("getResult")
             resultElement.innerHTML = '';
-    
-            axios.get(`http://localhost:3000/reports`,{
-               
 
-            }).then(function(response){
+            axios.get(`http://localhost:3000/reports`, {
+
+
+            }).then(function (response) {
 
                 console.log(response);
                 resultElement.innerHTML = response.data
 
-            }).catch(function(error){
+            }).catch(function (error) {
 
                 resultElement.innerHTML = errorMessage(error)
 

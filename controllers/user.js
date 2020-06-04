@@ -2,7 +2,7 @@ const db = require("../db");
 const user = require('../models/user.js');
 
 exports.findById = (req,res) =>{
-     id_user = req.params.id_user
+     const id_user = req.params.id_user
 
     db.con.query("SELECT username,password,contact,email,user_type FROM user",
     id_user,(err,result)=>{
