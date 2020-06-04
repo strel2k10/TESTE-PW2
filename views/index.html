@@ -17,8 +17,8 @@
     <button type="button" onclick="getUserById(1)">Get User</button>
     <button type="button" onclick="getAllUsers()">Get All Users</button>
     <button type="button" onclick="getReportById(1)">Get Report</button>
-    <button type="button" onclick="getAllReports()">Get All Reports enorme msm</button>    
-    
+    <button type="button" onclick="getAllReports()">Get All Reports enorme msm</button>
+
 
     <!-- Botão da Modal de Registo e Início de Sessão -->
     <div id="login" style="max-width: 50%; margin: auto; padding-top: 4%;">
@@ -58,6 +58,19 @@
                             <label for="exampleInputPassword1">Palavra Chave</label>
                             <input type="password" class="form-control" id="password">
                         </div>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="usertype" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tipo de Utilizador
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Standard</a>
+                                <a class="dropdown-item" href="#">Bombeiro</a>
+                                <a class="dropdown-item" href="#">Admin</a>
+                            </div>
+                        </div>
+                        <br>
+
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
